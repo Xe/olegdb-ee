@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"log"
 	"strings"
 	"time"
 
@@ -28,6 +29,8 @@ func main() {
 	s := &Server{
 		db: db,
 	}
+
+	log.Printf("Hail leviathan. Now listening on port %s", *port)
 
 	err = redcon.ListenAndServe(":"+*port, s.HandleCommand, nil, nil)
 	if err != nil {
